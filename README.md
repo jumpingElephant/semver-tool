@@ -95,6 +95,12 @@ Basic bumping operations
     $ semver bump release v0.1.0-SNAPSHOT
     0.1.0
 
+Advanced bumping operation
+
+get latest version tag of remote Git repository, then bump patch part of the version
+
+    $ semver bump patch $(git ls-remote --tags origin | grep --only-matching 'refs/tags/[0-9]*\.[0-9]*\.[0-9]*' | sort --reverse | head --lines=1 | grep --only-matching '[^\/]*$')
+
 Comparing version for scripting
 
     $ semver compare 1.0.1-rc1.1.0+build.051 1.0.1
